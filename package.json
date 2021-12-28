@@ -2,7 +2,21 @@
   "name": "@devmehq/open-graph-extractor",
   "version": "1.0.0",
   "private": false,
-  "description": "Advanced Email Validation with DNS MX lookup and Mailbox Verification",
+  "description": "Extract Open Graph and Twitter Card info off from html",
+  "keywords": [
+    "opengraph",
+    "opengraph-extractor",
+    "og",
+    "app links",
+    "dublin core",
+    "meta tags",
+    "metadata",
+    "ogp",
+    "open graph",
+    "scraper",
+    "twitter card",
+    "twitter"
+  ],
   "repository": {
     "type": "git",
     "url": "git://github.com/devmehq/open-graph-extractor"
