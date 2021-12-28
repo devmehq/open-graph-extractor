@@ -1,6 +1,6 @@
 {
   "name": "@devmehq/open-graph-extractor",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": false,
   "description": "Extract Open Graph and Twitter Card info off from html",
   "keywords": [
