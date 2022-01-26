@@ -52,7 +52,7 @@
     "@types/should": "13.0.0",
     "@types/sinon": "10.0.8",
     "axios": "0.25.0",
-    "chai": "4.3.4",
+    "chai": "4.3.5",
     "eslint": "8.7.0",
     "husky": "7.0.4",
     "lint-staged": "12.3.1",
