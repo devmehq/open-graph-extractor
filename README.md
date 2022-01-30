@@ -23,7 +23,7 @@ yarn add @devmehq/open-graph-extractor
 Or NPM
 
 ```npm
-npm insgall @devmehq/open-graph-extractor
+npm install @devmehq/open-graph-extractor
 ```
 
 ## Examples
