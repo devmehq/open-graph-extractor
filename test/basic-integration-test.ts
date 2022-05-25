@@ -1,6 +1,4 @@
 import { expect } from 'chai';
-import { extractOpenGraph } from '../src';
-import { readFileSync } from 'fs';
 import { ogs } from './helper';
 
 describe('basic', async function () {
@@ -150,11 +148,11 @@ describe('basic', async function () {
     expect(result.ogTitle).to.be.eql('Date.prototype.toLocaleString() - JavaScript | MDN');
     expect(result.ogLocale).to.be.eql('en-US');
     expect(result.ogUrl).to.be.eql('https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString');
-    expect(result.ogDate).to.be.eql('2021-07-20T18:47:57.000Z');
-    expect(result.favicon).to.be.eql('/favicon-48x48.97046865.png');
+    expect(result.ogDate).to.be.eql('2022-03-27T17:30:40.000Z');
+    expect(result.favicon).to.be.eql('/favicon-48x48.cbbd161b.png');
     // expect(result.charset).to.be.eql('utf8');
     expect(result.ogImage).to.be.eql({
-      url: 'https://developer.mozilla.org/mdn-social-share.0ca9dbda.png',
+      url: 'https://developer.mozilla.org/mdn-social-share.cd6c4a5a.png',
       width: null,
       height: null,
       type: 'png',
