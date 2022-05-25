@@ -23,6 +23,7 @@
   },
   "license": "MIT",
   "author": "DEV.ME <support@dev.me> (https://dev.me)",
+  "main": "./index.js",
   "scripts": {
     "build": "rm -rf dist && tsc -p .",
     "lint": "eslint lib test",
