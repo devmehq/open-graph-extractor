@@ -170,6 +170,38 @@ describe('basic', async function () {
       //'charset',
     );
   });
+  it('net-a-porter should return open graph data with one title', async function () {
+    const result = await ogs({
+      url: 'https://www.net-a-porter.com/en-au/shop/product/gucci/shoes/mid-heel/plastique-logo-embossed-rubber-mules/1647597276960849',
+    });
+    expect(result.ogTitle).to.be.eql('Blue Plastique logo-embossed rubber mules | GUCCI | NET-A-PORTER');
+    expect(result.ogLocale).to.be.eql('en');
+    expect(result.ogUrl).to.be.eql('https://www.net-a-porter.com/en-au/shop/product/gucci/shoes/mid-heel/plastique-logo-embossed-rubber-mules/1647597276960849');
+    expect(result.ogDate).to.be.eql(undefined);
+    expect(result.favicon).to.be.eql('/favicon.png');
+    // expect(result.charset).to.be.eql('utf8');
+    expect(result.ogImage).to.be.eql({
+      url: '//www.net-a-porter.com/variants/images/1647597276960849/in/w2000_q60.jpg',
+      width: null,
+      height: null,
+      type: 'jpg',
+    });
+    expect(result.twitterCard).to.be.eql('summary_large_image');
+    expect(result).to.have.all.keys(
+      'author',
+      'favicon',
+      'ogDescription',
+      'ogImage',
+      'ogLocale',
+      'ogLogo',
+      'ogTitle',
+      'ogType',
+      'ogUrl',
+      'twitterCard',
+      'twitterImage',
+      //'charset',
+    );
+  });
   // it('should error out if the page is too large', async function () {
   //   const result = await ogs({
   //     url: 'https://releases.ubuntu.com/20.04.3/ubuntu-20.04.3-desktop-amd64.iso',
