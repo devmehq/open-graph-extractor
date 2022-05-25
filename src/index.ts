@@ -28,7 +28,7 @@ export function extractOpenGraph(
   // find all the open graph info in the meta tags
   $('meta').each((index, meta: TagElement) => {
     if (!meta.attribs || (!meta.attribs.property && !meta.attribs.name)) return;
-    const property = meta.attribs.property || meta.attribs.name;
+    const property = meta.attribs.property || meta.attribs.name || meta.attribs.itemprop || meta.attribs.itemProp;
     const content = meta.attribs.content || meta.attribs.value;
     metaFields.forEach((item) => {
       if (property.toLowerCase() === item.property.toLowerCase()) {
