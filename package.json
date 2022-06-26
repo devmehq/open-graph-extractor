@@ -41,7 +41,7 @@
     "examples/**": "prettier --write"
   },
   "dependencies": {
-    "cheerio": "1.0.0-rc.11"
+    "cheerio": "1.0.0-rc.12"
   },
   "devDependencies": {
     "@types/chai": "4.3.1",
