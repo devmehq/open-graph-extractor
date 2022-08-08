@@ -44,7 +44,7 @@
     "cheerio": "1.0.0-rc.12"
   },
   "devDependencies": {
-    "@types/chai": "4.3.2",
+    "@types/chai": "4.3.3",
     "@types/cheerio": "0.22.31",
     "@types/eslint": "8.4.5",
     "@types/mocha": "9.1.1",
