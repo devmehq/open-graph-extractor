@@ -19,24 +19,25 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/devmehq/open-graph-extractor"
+    "url": "https://github.com/meabed/graphql-upload-ts"
   },
   "license": "MIT",
   "author": "DEV.ME <support@dev.me> (https://dev.me)",
   "main": "./index.js",
   "scripts": {
     "build": "rm -rf dist && tsc -p .",
-    "lint": "eslint lib test",
+    "lint": "eslint lib __tests__",
     "lint-fix": "yarn lint -- --fix",
-    "mocha": "nyc mocha --report lcovonly -- test/*-test.ts",
+    "mocha": "nyc mocha --report lcovonly -- __tests__/*-test.ts",
     "prepare": "yarn husky install",
-    "prettier": "prettier --write \"src/**/*.{ts,json}\" \"test/**/*.{ts,json}\"",
+    "prepublishOnly": "yarn build",
+    "prettier": "prettier --write \"src/**/*.{ts,json}\" \"__tests__/**/*.{ts,json}\"",
     "test": "TS_NODE_TRANSPILE_ONLY=1 TS_NODE_COMPILER_OPTIONS='{\"module\":\"commonjs\"}' mocha",
     "test-ci": "TS_NODE_TRANSPILE_ONLY=1 TS_NODE_COMPILER_OPTIONS='{\"module\":\"commonjs\"}' mocha"
   },
   "lint-staged": {
     "src/*.{ts,tsx,js,jsx}": "prettier --write",
-    "test/*.{ts,tsx,js,jsx}": "prettier --write",
+    "__tests__/*.{ts,tsx,js,jsx}": "prettier --write",
     "docs/**": "prettier --write",
     "examples/**": "prettier --write"
   },
@@ -46,13 +47,11 @@
   "devDependencies": {
     "@types/chai": "4.3.4",
     "@types/cheerio": "0.22.31",
-    "@types/eslint": "8.4.10",
     "@types/mocha": "10.0.1",
     "@types/node": "18.11.18",
-    "@types/prettier": "2.7.2",
     "@types/should": "13.0.0",
     "@types/sinon": "10.0.13",
-    "axios": "1.2.2",
+    "axios": "1.2.3",
     "chai": "4.3.7",
     "eslint": "8.32.0",
     "husky": "8.0.3",

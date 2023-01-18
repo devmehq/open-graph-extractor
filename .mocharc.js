@@ -23,7 +23,7 @@ module.exports = {
   recursive: false,
   reporter: 'spec',
   require: ['ts-node/register', 'should'],
-  spec: ['./test/*-test.ts'],
+  spec: ['./__tests__/*-test.ts'],
   timeout: '8s',
   'trace-warnings': true,
 };
