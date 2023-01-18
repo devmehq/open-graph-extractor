@@ -35,7 +35,7 @@ describe('basic', async function () {
     expect(result.favicon).to.be.eql('https://www.namecheap.com/assets/img/nc-icon/favicon.ico');
     expect(result.ogUrl).to.be.eql('https://www.namecheap.com/');
     expect(result.ogTitle).to.be.eql('Buy a domain name - Register cheap domain names from $0.99 - Namecheap');
-    expect(result.ogDescription).to.be.eql('Register domain names at Namecheap. Buy cheap domain names and enjoy 24/7 support. With over 13 million domains under management, you know you’re in good hands.');
+    expect(result.ogDescription).to.be.eql('Register domain names at Namecheap. Buy cheap domain names and enjoy 24/7 support. With over 16 million domains under management, you know you’re in good hands.');
     // expect(result.ogImage).to.be.an('array').and.to.not.be.empty;
     // expect(result.charset).to.be.eql('utf8');
     expect(result).to.have.all.keys(
@@ -148,7 +148,7 @@ describe('basic', async function () {
     expect(result.ogTitle).to.be.eql('Date.prototype.toLocaleString() - JavaScript | MDN');
     expect(result.ogLocale).to.be.eql('en-US');
     expect(result.ogUrl).to.be.eql('https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString');
-    expect(result.ogDate).to.be.eql('2022-03-27T17:30:40.000Z');
+    expect(result.ogDate).to.be.eql('2022-12-21T06:06:58.000Z');
     expect(result.favicon).to.be.eql('/favicon-48x48.cbbd161b.png');
     // expect(result.charset).to.be.eql('utf8');
     expect(result.ogImage).to.be.eql({
@@ -172,16 +172,16 @@ describe('basic', async function () {
   });
   it('net-a-porter should return open graph data with one title', async function () {
     const result = await ogs({
-      url: 'https://www.net-a-porter.com/en-au/shop/product/gucci/shoes/mid-heel/plastique-logo-embossed-rubber-mules/1647597276960849',
+      url: 'https://www.net-a-porter.com/en-ca/shop/product/gucci/shoes/mid-heel/plastique-logo-embossed-rubber-mules/1647597276126997',
     });
-    expect(result.ogTitle).to.be.eql('Blue Plastique logo-embossed rubber mules | GUCCI | NET-A-PORTER');
+    expect(result.ogTitle).to.be.eql('Ivory Plastique logo-embossed rubber mules | GUCCI | NET-A-PORTER');
     expect(result.ogLocale).to.be.eql('en');
-    expect(result.ogUrl).to.be.eql('https://www.net-a-porter.com/en-au/shop/product/gucci/shoes/mid-heel/plastique-logo-embossed-rubber-mules/1647597276960849');
+    expect(result.ogUrl).to.be.eql('https://www.net-a-porter.com/en-ca/shop/product/gucci/shoes/mid-heel/plastique-logo-embossed-rubber-mules/1647597276126997');
     expect(result.ogDate).to.be.eql(undefined);
     expect(result.favicon).to.be.eql('/favicon.png');
     // expect(result.charset).to.be.eql('utf8');
     expect(result.ogImage).to.be.eql({
-      url: '//www.net-a-porter.com/variants/images/1647597276960849/in/w2000_q60.jpg',
+      url: '//www.net-a-porter.com/variants/images/1647597276126997/in/w2000_q60.jpg',
       width: null,
       height: null,
       type: 'jpg',
