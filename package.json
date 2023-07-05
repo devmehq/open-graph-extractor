@@ -48,7 +48,7 @@
     "@types/chai": "4.3.5",
     "@types/cheerio": "0.22.31",
     "@types/mocha": "10.0.1",
-    "@types/node": "20.3.3",
+    "@types/node": "20.4.0",
     "@types/should": "13.0.0",
     "@types/sinon": "10.0.15",
     "axios": "1.4.0",
