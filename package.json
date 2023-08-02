@@ -50,7 +50,7 @@
     "@types/mocha": "10.0.1",
     "@types/node": "20.4.5",
     "@types/should": "13.0.0",
-    "@types/sinon": "10.0.15",
+    "@types/sinon": "10.0.16",
     "axios": "1.4.0",
     "chai": "4.3.7",
     "eslint": "8.46.0",
