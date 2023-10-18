@@ -45,8 +45,8 @@
     "cheerio": "1.0.0-rc.12"
   },
   "devDependencies": {
-    "@types/chai": "4.3.8",
-    "@types/cheerio": "0.22.32",
+    "@types/chai": "4.3.9",
+    "@types/cheerio": "0.22.33",
     "@types/mocha": "10.0.2",
     "@types/node": "20.8.6",
     "@types/should": "13.0.0",
