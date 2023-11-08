@@ -45,12 +45,12 @@
     "cheerio": "1.0.0-rc.12"
   },
   "devDependencies": {
-    "@types/chai": "4.3.9",
-    "@types/cheerio": "0.22.33",
-    "@types/mocha": "10.0.3",
-    "@types/node": "20.8.10",
+    "@types/chai": "4.3.10",
+    "@types/cheerio": "0.22.34",
+    "@types/mocha": "10.0.4",
+    "@types/node": "20.9.0",
     "@types/should": "13.0.0",
-    "@types/sinon": "17.0.0",
+    "@types/sinon": "17.0.1",
     "axios": "1.6.0",
     "chai": "4.3.10",
     "eslint": "8.53.0",
