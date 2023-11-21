@@ -46,7 +46,7 @@
   },
   "devDependencies": {
     "@types/chai": "4.3.10",
-    "@types/cheerio": "0.22.34",
+    "@types/cheerio": "0.22.35",
     "@types/mocha": "10.0.4",
     "@types/node": "20.9.2",
     "@types/should": "13.0.0",
@@ -62,7 +62,7 @@
     "should": "13.2.3",
     "sinon": "17.0.1",
     "ts-node": "10.9.1",
-    "typescript": "5.2.2"
+    "typescript": "5.3.2"
   },
   "engines": {
     "node": ">= 12.0"
