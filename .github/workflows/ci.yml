@@ -9,7 +9,6 @@ on:
       - 'package.json'
       - 'yarn.lock'
       - 'release.config.js'
-      - '.github/workflows/ci.yml'
     branches:
       - '*'
       - '**'
@@ -44,7 +43,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 19
+          node-version: 20
 
       - name: Yarn
         run: yarn install --frozen-lockfile

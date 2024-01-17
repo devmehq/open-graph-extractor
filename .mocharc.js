@@ -17,7 +17,11 @@ module.exports = {
   extension: ['js', 'cjs', 'mjs', 'ts'],
   'inline-diffs': false,
   jobs: 2,
-  'node-option': ['unhandled-rejections=strict'],
+  'node-option': [
+    'unhandled-rejections=strict',
+    'experimental-specifier-resolution=node',
+    'loader=ts-node/esm',
+  ],
   package: './package.json',
   parallel: false,
   recursive: false,

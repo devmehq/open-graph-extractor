@@ -3,19 +3,5 @@
   "singleQuote": true,
   "useTabs": false,
   "tabWidth": 2,
-  "trailingComma": "all",
-  "overrides": [
-    {
-      "files": "*.ts",
-      "options": {
-        "parser": "typescript"
-      }
-    },
-    {
-      "files": "*.json",
-      "options": {
-        "parser": "json-stringify"
-      }
-    }
-  ]
+  "trailingComma": "all"
 }
