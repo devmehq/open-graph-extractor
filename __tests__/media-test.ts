@@ -1,7 +1,6 @@
-import { expect } from 'chai';
 import { mediaSetup } from '../src/media';
 
-describe('media', async function () {
+describe('media', function () {
   it('has images and twitter images', async function () {
     const ogMedia = mediaSetup(
       {
@@ -17,14 +16,14 @@ describe('media', async function () {
       {},
     );
 
-    expect(ogMedia.ogImage).to.eql({
+    expect(ogMedia.ogImage).toEqual({
       url: 'http://test.com/logo.png',
       width: '300',
       height: '300',
       type: 'image/png',
     });
 
-    expect(ogMedia.twitterImage).to.eql({
+    expect(ogMedia.twitterImage).toEqual({
       url: 'http://test.com/logo.png',
       width: '300',
       height: '300',
@@ -46,14 +45,14 @@ describe('media', async function () {
       {},
     );
 
-    expect(ogMedia.ogImage).to.eql({
+    expect(ogMedia.ogImage).toEqual({
       url: 'http://test.com/logo_one.png',
       width: '300',
       height: '300',
       type: 'image/png',
     });
 
-    expect(ogMedia.twitterImage).to.eql({
+    expect(ogMedia.twitterImage).toEqual({
       url: 'http://test.com/logo_one.png',
       width: '300',
       height: '300',
@@ -75,14 +74,14 @@ describe('media', async function () {
       {},
     );
 
-    expect(ogMedia.ogImage).to.eql({
+    expect(ogMedia.ogImage).toEqual({
       url: 'http://test.com/logo_two.gif',
       type: 'image/gif',
       width: '600',
       height: '600',
     });
 
-    expect(ogMedia.twitterImage).to.eql({
+    expect(ogMedia.twitterImage).toEqual({
       url: 'http://test.com/logo_two.gif',
       alt: 'image/gif',
       width: '300',
@@ -100,10 +99,10 @@ describe('media', async function () {
       {},
     );
 
-    expect(ogMedia.ogImage).to.eql(undefined);
-    expect(ogMedia.twitterImage).to.eql(undefined);
-    expect(ogMedia.ogVideo).to.eql(undefined);
-    expect(ogMedia.twitterPlayer).to.eql(undefined);
+    expect(ogMedia.ogImage).toBeUndefined();
+    expect(ogMedia.twitterImage).toBeUndefined();
+    expect(ogMedia.ogVideo).toBeUndefined();
+    expect(ogMedia.twitterPlayer).toBeUndefined();
   });
   it('has video and twitter video', async function () {
     const ogMedia = mediaSetup(
@@ -120,14 +119,14 @@ describe('media', async function () {
       {},
     );
 
-    expect(ogMedia.ogVideo).to.eql({
+    expect(ogMedia.ogVideo).toEqual({
       url: 'http://test.com/logo.png',
       width: '300',
       height: '300',
       type: 'image/png',
     });
 
-    expect(ogMedia.twitterPlayer).to.eql({
+    expect(ogMedia.twitterPlayer).toEqual({
       url: 'http://test.com/logo.png',
       width: '300',
       height: '300',
@@ -144,7 +143,7 @@ describe('media', async function () {
       {},
     );
 
-    expect(ogMedia.musicSong).to.eql({
+    expect(ogMedia.musicSong).toEqual({
       url: 'http://test.com/songurl',
       track: '1',
       disc: '1',
@@ -162,7 +161,7 @@ describe('media', async function () {
       },
     );
 
-    expect(ogMedia.musicSong).to.eql([
+    expect(ogMedia.musicSong).toEqual([
       {
         url: 'http://test.com/songurl',
         track: '1',
@@ -210,7 +209,7 @@ describe('media', async function () {
       },
     );
 
-    expect(ogMedia.ogImage).to.eql([
+    expect(ogMedia.ogImage).toEqual([
       {
         url: 'http://test.com/logo.png',
         width: '300',
@@ -219,7 +218,7 @@ describe('media', async function () {
       },
     ]);
 
-    expect(ogMedia.twitterImage).to.eql([
+    expect(ogMedia.twitterImage).toEqual([
       {
         url: 'http://test.com/logo.png',
         width: '300',
@@ -228,7 +227,7 @@ describe('media', async function () {
       },
     ]);
 
-    expect(ogMedia.ogVideo).to.eql([
+    expect(ogMedia.ogVideo).toEqual([
       {
         url: 'http://test.com/logo.png',
         width: '300',
@@ -237,7 +236,7 @@ describe('media', async function () {
       },
     ]);
 
-    expect(ogMedia.twitterPlayer).to.eql([
+    expect(ogMedia.twitterPlayer).toEqual([
       {
         url: 'http://test.com/logo.png',
         width: '300',

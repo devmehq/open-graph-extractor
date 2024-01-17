@@ -1,4 +1,3 @@
-import { expect } from 'chai';
 import { extractOpenGraph } from '../src';
 
 const basicHTML = `
@@ -50,29 +49,29 @@ const encodingHTML = `
     </body>
   </html>`;
 
-describe('return openGraphScraper', async function () {
-  describe('should be able to hit site and find OG title info', async function () {
-    describe('with html', async function () {
+describe('return openGraphScraper', function () {
+  describe('should be able to hit site and find OG title info', function () {
+    it('with html', function () {
       const data = extractOpenGraph(basicHTML);
-      expect(data.ogTitle).to.be.eql('test page');
+      expect(data.ogTitle).toEqual('test page');
     });
 
-    describe('when site is not on blacklist', async function () {
+    it('when site is not on blacklist', function () {
       const data = extractOpenGraph(basicHTML);
-      expect(data.ogTitle).to.be.eql('test page');
+      expect(data.ogTitle).toEqual('test page');
     });
 
-    describe('with encoding set to null (this has been deprecated, but should still work)', async function () {
+    it('with encoding set to null (this has been deprecated, but should still work)', async function () {
       const data = extractOpenGraph(encodingHTML);
       // expect(data.charset).to.be.eql(null);
-      expect(data.ogTitle).to.be.eql('тестовая страница');
-      expect(data.ogDescription).to.be.eql('привет тестовая страница<');
+      expect(data.ogTitle).toEqual('тестовая страница');
+      expect(data.ogDescription).toEqual('привет тестовая страница<');
     });
 
-    describe('when there is more then one image', async function () {
+    it('when there is more then one image', function () {
       const data = extractOpenGraph(multipleImageHTML);
-      expect(data.ogTitle).to.be.eql('test page');
-      expect(data.ogImage).to.be.eql({
+      expect(data.ogTitle).toEqual('test page');
+      expect(data.ogImage).toEqual({
         url: 'test1.png',
         width: null,
         height: null,
@@ -80,30 +79,24 @@ describe('return openGraphScraper', async function () {
       });
     });
 
-    describe('when meta description exist while og description does not', async function () {
-      it('should pass', async function () {
-        const data = extractOpenGraph(metaDescriptionHTML);
-        expect(data.ogTitle).to.be.eql('test page');
-        expect(data.ogDescription).to.be.eql('test description from meta');
-      });
+    it('when meta description exist while og description does not should pass', function () {
+      const data = extractOpenGraph(metaDescriptionHTML);
+      expect(data.ogTitle).toEqual('test page');
+      expect(data.ogDescription).toEqual('test description from meta');
     });
 
-    describe('as a browser', async function () {
-      it('should pass', async function () {
-        const data = extractOpenGraph(basicHTML);
-        expect(data.ogTitle).to.be.eql('test page');
-      });
+    it('as a browser should pass', function () {
+      const data = extractOpenGraph(basicHTML);
+      expect(data.ogTitle).toEqual('test page');
     });
 
-    describe('using onlyGetOpenGraphInfo', async function () {
-      it('should pass', async function () {
-        const data = extractOpenGraph(metaDescriptionHTML, { onlyGetOpenGraphInfo: true });
-        expect(data.ogTitle).to.be.eql(undefined);
-        expect(data.describe).to.be.eql(undefined);
-      });
+    it('using onlyGetOpenGraphInfo should pass', function () {
+      const data = extractOpenGraph(metaDescriptionHTML, { onlyGetOpenGraphInfo: true });
+      expect(data.ogTitle).toBeUndefined();
+      expect(data.describe).toBeUndefined();
     });
 
-    describe('when there is a og:image:secure_url tag', async function () {
+    it('when there is a og:image:secure_url tag should pass', function () {
       const secureUrlHTML = `
         <html>
           <head>
@@ -111,18 +104,16 @@ describe('return openGraphScraper', async function () {
           </head>
           <body></body>
         </html>`;
-      it('should pass', async function () {
-        const data = extractOpenGraph(secureUrlHTML);
-        expect(data.ogImage).to.be.eql({
-          url: 'test1.png',
-          width: null,
-          height: null,
-          type: 'png',
-        });
+      const data = extractOpenGraph(secureUrlHTML);
+      expect(data.ogImage).toEqual({
+        url: 'test1.png',
+        width: null,
+        height: null,
+        type: 'png',
       });
     });
 
-    describe('when there is a og:image:url tag', async function () {
+    it('when there is a og:image:url tag should pass', function () {
       const secureUrlHTML = `
         <html>
           <head>
@@ -130,38 +121,32 @@ describe('return openGraphScraper', async function () {
           </head>
           <body></body>
         </html>`;
-      it('should pass', async function () {
-        const data = extractOpenGraph(secureUrlHTML);
-        expect(data.ogImage).to.be.eql({
-          url: 'test1.png',
-          width: null,
-          height: null,
-          type: 'png',
-        });
+      const data = extractOpenGraph(secureUrlHTML);
+      expect(data.ogImage).toEqual({
+        url: 'test1.png',
+        width: null,
+        height: null,
+        type: 'png',
       });
     });
 
-    describe('when charset and chardet are unknown', async function () {
-      it('should pass', async function () {
-        const data = extractOpenGraph(basicHTML);
-        expect(data.ogTitle).to.be.eql('test page');
-      });
+    it('when charset and chardet are unknown should pass', function () {
+      const data = extractOpenGraph(basicHTML);
+      expect(data.ogTitle).toEqual('test page');
     });
 
-    it('when passing in a custom tag', async function () {
-      it('should pass', async function () {
-        const data = extractOpenGraph(basicHTML, {
-          customMetaTags: [
-            {
-              multiple: false,
-              property: 'foo',
-              fieldName: 'fooTag',
-            },
-          ],
-        });
-        expect(data.fooTag).to.be.eql('bar');
-        expect(data.ogTitle).to.be.eql('test page');
+    it('when passing in a custom tag should pass', async function () {
+      const data = extractOpenGraph(basicHTML, {
+        customMetaTags: [
+          {
+            multiple: false,
+            property: 'foo',
+            fieldName: 'fooTag',
+          },
+        ],
       });
+      expect(data.fooTag).toEqual('bar');
+      expect(data.ogTitle).toEqual('test page');
     });
   });
 });
