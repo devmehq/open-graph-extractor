@@ -1,27 +1,61 @@
 import * as cheerio from 'cheerio';
 import { fields } from './fields';
-import { mediaSetup } from './media';
+import { IOgObjectMedia, mediaSetup } from './media';
 import { removeNestedUndefinedValues } from './utils';
 import { fallback } from './fallback';
-
 import Root = cheerio.Root;
 import TagElement = cheerio.TagElement;
+
+export interface IExtractOpenGraphOptions {
+  customMetaTags?: ConcatArray<{ multiple: boolean; property: string; fieldName: string }>;
+  allMedia?: boolean;
+  onlyGetOpenGraphInfo?: boolean;
+  ogImageFallback?: boolean;
+}
+export interface IOGResult extends IOgObjectMedia {
+  ogTitle?: string;
+  ogType?: string;
+  ogUrl?: string;
+  ogDescription?: string;
+  ogLocale?: string;
+  favicon?: string;
+  ogDate?: string;
+  alAndroidAppName?: string;
+  alAndroidPackage?: string;
+  alAndroidUrl?: string;
+  alIosAppName?: string;
+  alIosAppStoreId?: string;
+  alIosUrl?: string;
+  alWebShouldFallback?: string;
+  twitterCard?: string;
+  twitterSite?: string;
+  twitterTitle?: string;
+  twitterDescription?: string;
+  twitterAppNameiPhone?: string;
+  twitterAppIdiPhone?: string;
+  twitterAppUrliPhone?: string;
+  twitterAppNameiPad?: string;
+  twitterAppIdiPad?: string;
+  twitterAppUrliPad?: string;
+  twitterAppNameGooglePlay?: string;
+  twitterAppIdGooglePlay?: string;
+  twitterAppUrlGooglePlay?: string;
+  ogImageSecureURL?: string;
+  ogImageURL?: string;
+  ogSiteName?: string;
+  charset?: string;
+  error?: string;
+  errorDetails?: string;
+  [key: string]: any;
+}
 
 /*
  * extract meta tags from html string
  * @param string body - html string
  * @param string options - options the user has set
  */
-export function extractOpenGraph(
-  body: string | Buffer,
-  options?: {
-    customMetaTags?: ConcatArray<{ multiple: boolean; property: string; fieldName: string }>;
-    allMedia?: boolean;
-    onlyGetOpenGraphInfo?: boolean;
-    ogImageFallback?: boolean;
-  },
-) {
-  let ogObject: any = {};
+export function extractOpenGraph(body: string | Buffer, options?: IExtractOpenGraphOptions) {
+  let ogObject: IOGResult = {} as IOGResult;
   const $: Root = cheerio.load(body);
   const metaFields = fields.concat(options?.customMetaTags ?? []);
 

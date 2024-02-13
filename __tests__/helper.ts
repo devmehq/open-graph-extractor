@@ -1,8 +1,11 @@
 import axios from 'axios';
-import { extractOpenGraph } from '../src';
+import { extractOpenGraph, IExtractOpenGraphOptions } from '../src';
 
-export async function ogs({ url, ...opt }: any) {
-  return axios.get(url).then((res) => {
-    return extractOpenGraph(res.data, opt);
-  });
+interface IOGSOptions extends IExtractOpenGraphOptions {
+  url: string;
+}
+
+export async function ogs({ url, ...opt }: IOGSOptions) {
+  const { data } = await axios.get(url);
+  return extractOpenGraph(data, opt);
 }

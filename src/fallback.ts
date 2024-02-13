@@ -1,34 +1,33 @@
 import * as cheerio from 'cheerio';
 import { findImageTypeFromUrl, isImageTypeValid, isUrlValid } from './utils';
+import { IOgImage } from './media';
 import Selector = cheerio.Selector;
 import Element = cheerio.Element;
 
 const doesElementExist = (selector: string | Element, attribute: string, $: Selector) => $(selector).attr(attribute) && $(selector).attr(attribute).length > 0;
 
-type OgImage = { url: string; type: string; width?: string; height?: string };
+interface IFallbackOptions {
+  allMedia?: boolean;
+  ogImageFallback?: boolean;
+  customMetaTags?: ConcatArray<{ multiple: boolean; property: string; fieldName: string }>;
+  onlyGetOpenGraphInfo?: boolean;
+}
 
-export function fallback(
-  ogObject: {
-    ogTitle?: any;
-    ogDescription?: any;
-    ogImage?: OgImage[] | OgImage;
-    ogAudioURL?: any;
-    ogAudioSecureURL?: any;
-    ogAudioType?: any;
-    ogLocale?: any;
-    ogLogo?: any;
-    ogUrl?: any;
-    ogDate?: any;
-    favicon?: any;
-  },
-  options: {
-    allMedia?: boolean;
-    ogImageFallback?: boolean;
-    customMetaTags?: ConcatArray<{ multiple: boolean; property: string; fieldName: string }>;
-    onlyGetOpenGraphInfo?: any;
-  },
-  $: Selector,
-) {
+interface IFallbackOgObject {
+  ogTitle?: string;
+  ogDescription?: string;
+  ogImage?: IOgImage | IOgImage[];
+  ogAudioURL?: string;
+  ogAudioSecureURL?: string;
+  ogAudioType?: string;
+  ogLocale?: string;
+  ogLogo?: string;
+  ogUrl?: string;
+  ogDate?: string;
+  favicon?: string;
+}
+
+export function fallback(ogObject: IFallbackOgObject, options: IFallbackOptions, $: Selector) {
   // title fallback
   if (!ogObject.ogTitle) {
     if ($('title').text() && $('title').text().length > 0) {
@@ -65,7 +64,7 @@ export function fallback(
         const source = $(imageElement).attr('src');
         const type = findImageTypeFromUrl(source);
         if (!isUrlValid(source) || !isImageTypeValid(type)) return false;
-        (ogObject.ogImage as OgImage[]).push({
+        (ogObject.ogImage as IOgImage[]).push({
           url: source,
           width: $(imageElement).attr('width') || null,
           height: $(imageElement).attr('height') || null,
