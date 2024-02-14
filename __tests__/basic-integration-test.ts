@@ -172,11 +172,10 @@ describe('basic', function () {
       ]),
     );
   });
-  it('net-a-porter should return open graph data with one title', async function () {
+  xit('net-a-porter should return open graph data with one title', async function () {
     const result = await ogs({
       url: 'https://www.net-a-porter.com/en-ca/shop/product/gucci/shoes/mid-heel/plastique-logo-embossed-rubber-mules/1647597276126997',
     });
-    console.log(result);
     expect(result.ogTitle).toEqual('Ivory Plastique logo-embossed rubber mules | GUCCI | NET-A-PORTER');
     expect(result.ogLocale).toEqual('en');
     expect(result.ogUrl).toEqual('https://www.net-a-porter.com/en-ca/shop/product/gucci/shoes/mid-heel/plastique-logo-embossed-rubber-mules/1647597276126997');

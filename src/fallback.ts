@@ -13,10 +13,10 @@ interface IFallbackOptions {
   onlyGetOpenGraphInfo?: boolean;
 }
 
-interface IFallbackOgObject {
+export interface IFallbackOgObject {
   ogTitle?: string;
   ogDescription?: string;
-  ogImage?: IOgImage | IOgImage[];
+  ogImage?: IOgImage | IOgImage[] | string | string[];
   ogAudioURL?: string;
   ogAudioSecureURL?: string;
   ogAudioType?: string;
@@ -78,13 +78,13 @@ export function fallback(ogObject: IFallbackOgObject, options: IFallbackOptions,
     // if there isn't a type, try to pull it from the URL
     if (Array.isArray(ogObject.ogImage)) {
       ogObject.ogImage.map((image) => {
-        if (image.url && !image.type) {
+        if (typeof image !== 'string' && image?.url && !image.type) {
           const type = findImageTypeFromUrl(image.url);
           if (isImageTypeValid(type)) image.type = type;
         }
         return false;
       });
-    } else if (ogObject.ogImage.url && !ogObject.ogImage.type) {
+    } else if (typeof ogObject.ogImage !== 'string' && ogObject.ogImage?.url && !ogObject.ogImage?.type) {
       const type = findImageTypeFromUrl(ogObject.ogImage.url);
       if (isImageTypeValid(type)) ogObject.ogImage.type = type;
     }

@@ -100,26 +100,30 @@ export interface IMusicSong {
   disc: string;
 }
 export interface IOgObjectMedia {
-  ogImage: IOgImage | IOgImage[] | string;
-  ogImageWidth: string[];
-  ogImageHeight: string[];
-  ogImageType: string[];
-  ogVideo: IOgVideo | IOgVideo[] | string;
-  ogVideoWidth: string[];
-  ogVideoHeight: string[];
-  ogVideoType: string[];
-  twitterImageSrc: string[];
-  twitterImage: string[] | ITwitterImage | ITwitterImage[];
-  twitterImageWidth: string[];
-  twitterImageHeight: string[];
-  twitterImageAlt: string[];
-  twitterPlayer: ITwitterPlayer | ITwitterPlayer[];
-  twitterPlayerWidth: string[];
-  twitterPlayerHeight: string[];
-  twitterPlayerStream: string[];
-  musicSong: IMusicSong | IMusicSong[];
-  musicSongTrack: string[];
-  musicSongDisc: string[];
+  ogTitle?: string;
+  ogType?: string;
+  ogUrl?: string;
+  ogDescription?: string;
+  ogImage?: IOgImage | IOgImage[] | string | string[];
+  ogImageWidth?: string[];
+  ogImageHeight?: string[];
+  ogImageType?: string[];
+  ogVideo?: IOgVideo | IOgVideo[] | string | string[];
+  ogVideoWidth?: string[];
+  ogVideoHeight?: string[];
+  ogVideoType?: string[];
+  twitterImageSrc?: string[];
+  twitterImage?: ITwitterImage | ITwitterImage[] | string | string[];
+  twitterImageWidth?: string[];
+  twitterImageHeight?: string[];
+  twitterImageAlt?: string[];
+  twitterPlayer?: ITwitterPlayer | ITwitterPlayer[] | string | string[];
+  twitterPlayerWidth?: string[];
+  twitterPlayerHeight?: string[];
+  twitterPlayerStream?: string[];
+  musicSong?: IMusicSong | IMusicSong[] | string | string[];
+  musicSongTrack?: string[];
+  musicSongDisc?: string[];
 }
 /*
  * media setup

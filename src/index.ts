@@ -12,6 +12,7 @@ export interface IExtractOpenGraphOptions {
   onlyGetOpenGraphInfo?: boolean;
   ogImageFallback?: boolean;
 }
+
 export interface IOGResult extends IOgObjectMedia {
   ogTitle?: string;
   ogType?: string;
@@ -46,6 +47,7 @@ export interface IOGResult extends IOgObjectMedia {
   charset?: string;
   error?: string;
   errorDetails?: string;
+
   [key: string]: any;
 }
 
