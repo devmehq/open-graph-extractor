@@ -14,10 +14,6 @@ export interface IExtractOpenGraphOptions {
 }
 
 export interface IOGResult extends IOgObjectMedia {
-  ogTitle?: string;
-  ogType?: string;
-  ogUrl?: string;
-  ogDescription?: string;
   ogLocale?: string;
   favicon?: string;
   ogDate?: string;

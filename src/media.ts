@@ -71,33 +71,33 @@ export interface IMediaOptions {
   onlyGetOpenGraphInfo?: any;
 }
 export interface IOgImage {
-  url: string;
-  width: string;
-  height: string;
-  type: string;
+  url?: string;
+  width?: string;
+  height?: string;
+  type?: string;
 }
 export interface IOgVideo {
-  url: string;
-  width: string;
-  height: string;
-  type: string;
+  url?: string;
+  width?: string;
+  height?: string;
+  type?: string;
 }
 export interface ITwitterImage {
-  url: string;
-  width: string;
-  height: string;
-  alt: string;
+  url?: string;
+  width?: string;
+  height?: string;
+  alt?: string;
 }
 export interface ITwitterPlayer {
-  url: string;
-  width: string;
-  height: string;
-  stream: string;
+  url?: string;
+  width?: string;
+  height?: string;
+  stream?: string;
 }
 export interface IMusicSong {
-  url: string;
-  track: string;
-  disc: string;
+  url?: string;
+  track?: string;
+  disc?: string;
 }
 export interface IOgObjectMedia {
   ogTitle?: string;
