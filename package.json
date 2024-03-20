@@ -45,7 +45,7 @@
     "cheerio": "1.0.0-rc.12"
   },
   "devDependencies": {
-    "@types/chai": "4.3.13",
+    "@types/chai": "4.3.14",
     "@types/cheerio": "0.22.35",
     "@types/jest": "^29.5.12",
     "@types/node": "20.11.30",
@@ -61,7 +61,7 @@
     "lint-staged": "15.2.2",
     "prettier": "3.2.5",
     "ts-jest": "^29.1.2",
-    "typescript": "5.4.2"
+    "typescript": "5.4.3"
   },
   "engines": {
     "node": ">= 12.0"

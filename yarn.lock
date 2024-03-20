@@ -683,10 +683,10 @@
   dependencies:
     "@babel/types" "^7.20.7"
 
-"@types/chai@4.3.13":
-  version "4.3.13"
-  resolved "https://registry.yarnpkg.com/@types/chai/-/chai-4.3.13.tgz#1b152232b93959829842177cbdfc756ed27e9fd9"
-  integrity sha512-+LxQEbg4BDUf88utmhpUpTyYn1zHao443aGnXIAQak9ZMt9Rtsic0Oig0OS1xyIqdDXc5uMekoC6NaiUlkT/qA==
+"@types/chai@4.3.14":
+  version "4.3.14"
+  resolved "https://registry.yarnpkg.com/@types/chai/-/chai-4.3.14.tgz#ae3055ea2be43c91c9fd700a36d67820026d96e6"
+  integrity sha512-Wj71sXE4Q4AkGdG9Tvq1u/fquNz9EdG4LIJMwVVII7ashjD/8cf8fyIfJAjRr6YcsXnSE8cOGQPq1gqeR8z+3w==
 
 "@types/cheerio@0.22.35":
   version "0.22.35"
@@ -3248,10 +3248,10 @@ type-fest@^3.0.0:
   resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-3.13.1.tgz#bb744c1f0678bea7543a2d1ec24e83e68e8c8706"
   integrity sha512-tLq3bSNx+xSpwvAJnzrK0Ep5CLNWjvFTOp71URMaAEWBfRb9nnJiBoUe0tF8bI4ZFO3omgBR6NvnbzVUT3Ly4g==
 
-typescript@5.4.2:
-  version "5.4.2"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.4.2.tgz#0ae9cebcfae970718474fe0da2c090cad6577372"
-  integrity sha512-+2/g0Fds1ERlP6JsakQQDXjZdZMM+rqpamFZJEKh4kwTIn3iDkgKtby0CeNd5ATNZ4Ry1ax15TMx0W2V+miizQ==
+typescript@5.4.3:
+  version "5.4.3"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.4.3.tgz#5c6fedd4c87bee01cd7a528a30145521f8e0feff"
+  integrity sha512-KrPd3PKaCLr78MalgiwJnA25Nm8HAmdwN3mYUYZgG/wizIo9EainNVQI9/yDavtVFRN2h3k8uf3GLHuhDMgEHg==
 
 undici-types@~5.26.4:
   version "5.26.5"
