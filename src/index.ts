@@ -7,7 +7,11 @@ import Root = cheerio.Root;
 import TagElement = cheerio.TagElement;
 
 export interface IExtractOpenGraphOptions {
-  customMetaTags?: ConcatArray<{ multiple: boolean; property: string; fieldName: string }>;
+  customMetaTags?: ConcatArray<{
+    multiple: boolean;
+    property: string;
+    fieldName: string;
+  }>;
   allMedia?: boolean;
   onlyGetOpenGraphInfo?: boolean;
   ogImageFallback?: boolean;
@@ -52,7 +56,10 @@ export interface IOGResult extends IOgObjectMedia {
  * @param string body - html string
  * @param string options - options the user has set
  */
-export function extractOpenGraph(body: string | Buffer, options?: IExtractOpenGraphOptions) {
+export function extractOpenGraph(
+  body: string | Buffer,
+  options?: IExtractOpenGraphOptions,
+) {
   let ogObject: IOGResult = {} as IOGResult;
   const $: Root = cheerio.load(body);
   const metaFields = fields.concat(options?.customMetaTags ?? []);
@@ -60,7 +67,11 @@ export function extractOpenGraph(body: string | Buffer, options?: IExtractOpenGr
   // find all the open graph info in the meta tags
   $('meta').each((index, meta: TagElement) => {
     if (!meta.attribs || (!meta.attribs.property && !meta.attribs.name)) return;
-    const property = meta.attribs.property || meta.attribs.name || meta.attribs.itemprop || meta.attribs.itemProp;
+    const property =
+      meta.attribs.property ||
+      meta.attribs.name ||
+      meta.attribs.itemprop ||
+      meta.attribs.itemProp;
     const content = meta.attribs.content || meta.attribs.value;
     metaFields.forEach((item) => {
       if (property.toLowerCase() === item.property.toLowerCase()) {

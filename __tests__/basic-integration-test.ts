@@ -8,7 +8,9 @@ describe('basic', function () {
     expect(result.ogTitle).toEqual('Open Graph protocol');
     expect(result.ogType).toEqual('website');
     expect(result.ogUrl).toEqual('https://ogp.me/');
-    expect(result.ogDescription).toEqual('The Open Graph protocol enables any web page to become a rich object in a social graph.');
+    expect(result.ogDescription).toEqual(
+      'The Open Graph protocol enables any web page to become a rich object in a social graph.',
+    );
     expect(result.ogImage).toEqual({
       url: 'https://ogp.me/logo.png',
       width: '300',
@@ -32,10 +34,16 @@ describe('basic', function () {
     });
     expect(typeof result.ogDescription).not.toHaveLength(0);
     expect(result.ogLocale).toEqual('en');
-    expect(result.favicon).toEqual('https://www.namecheap.com/assets/img/nc-icon/favicon.ico');
+    expect(result.favicon).toEqual(
+      'https://www.namecheap.com/assets/img/nc-icon/favicon.ico',
+    );
     expect(result.ogUrl).toEqual('https://www.namecheap.com/');
-    expect(result.ogTitle).toEqual('Buy a domain name - Register cheap domain names from $0.99 - Namecheap');
-    expect(result.ogDescription).toEqual('Register domain names at Namecheap. Buy cheap domain names and enjoy 24/7 support. With over 16 million domains under management, you know you’re in good hands.');
+    expect(result.ogTitle).toEqual(
+      'Buy a domain name - Register cheap domain names from $0.99 - Namecheap',
+    );
+    expect(result.ogDescription).toEqual(
+      'Register domain names at Namecheap. Buy cheap domain names and enjoy 24/7 support. With over 18 million domains under management, you know you’re in good hands.',
+    );
     // expect(result.ogImage).to.be.an('array').and.to.not.be.empty;
     // expect(result.charset).to.be.eql('utf8');
     expect(Object.keys(result)).toEqual(
@@ -54,14 +62,18 @@ describe('basic', function () {
     });
     expect(result.alAndroidAppName).toEqual('Vimeo');
     expect(result.alAndroidPackage).toEqual('com.vimeo.android.videoapp');
-    expect(result.alAndroidUrl).toEqual('vimeo://app.vimeo.com/videos/232889838');
+    expect(result.alAndroidUrl).toEqual(
+      'vimeo://app.vimeo.com/videos/232889838',
+    );
     expect(result.alIosAppName).toEqual('Vimeo');
     expect(result.alIosAppStoreId).toEqual('425194759');
     expect(result.alIosUrl).toEqual('vimeo://app.vimeo.com/videos/232889838');
     expect(result.alWebShouldFallback).toEqual('true');
     expect(result.ogSiteName).toEqual('Vimeo');
     expect(result.ogUrl).toEqual('https://vimeo.com/232889838');
-    expect(result.favicon.split('?')[0]).toEqual('https://f.vimeocdn.com/images_v6/favicon.ico');
+    expect(result.favicon.split('?')[0]).toEqual(
+      'https://f.vimeocdn.com/images_v6/favicon.ico',
+    );
     expect(result.ogType).toEqual('video.other');
     expect(result.ogTitle).toEqual('Heroin');
     expect(typeof result.ogDescription).not.toHaveLength(0);
@@ -71,13 +83,19 @@ describe('basic', function () {
     expect(typeof result.twitterDescription).not.toHaveLength(0);
     expect(result.twitterAppNameiPhone).toEqual('Vimeo');
     expect(result.twitterAppIdiPhone).toEqual('425194759');
-    expect(result.twitterAppUrliPhone).toEqual('vimeo://app.vimeo.com/videos/232889838');
+    expect(result.twitterAppUrliPhone).toEqual(
+      'vimeo://app.vimeo.com/videos/232889838',
+    );
     expect(result.twitterAppNameiPad).toEqual('Vimeo');
     expect(result.twitterAppIdiPad).toEqual('425194759');
-    expect(result.twitterAppUrliPad).toEqual('vimeo://app.vimeo.com/videos/232889838');
+    expect(result.twitterAppUrliPad).toEqual(
+      'vimeo://app.vimeo.com/videos/232889838',
+    );
     expect(result.twitterAppNameGooglePlay).toEqual('Vimeo');
     expect(result.twitterAppIdGooglePlay).toEqual('com.vimeo.android.videoapp');
-    expect(result.twitterAppUrlGooglePlay).toEqual('vimeo://app.vimeo.com/videos/232889838');
+    expect(result.twitterAppUrlGooglePlay).toEqual(
+      'vimeo://app.vimeo.com/videos/232889838',
+    );
     expect(result.ogLocale).toEqual('en');
     expect(result.ogImage).toEqual({
       url: 'https://i.vimeocdn.com/video/659221704-68d52ff1744d1c12605d1743d3ea6b031937d002d9373e5f6111a6aef986f3e5-d?f=webp',
@@ -145,10 +163,14 @@ describe('basic', function () {
     const result = await ogs({
       url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString',
     });
-    expect(result.ogTitle).toEqual('Date.prototype.toLocaleString() - JavaScript | MDN');
+    expect(result.ogTitle).toEqual(
+      'Date.prototype.toLocaleString() - JavaScript | MDN',
+    );
     expect(result.ogLocale).toEqual('en_US');
-    expect(result.ogUrl).toEqual('https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString');
-    expect(result.ogDate).toEqual('2023-12-11T08:18:44.000Z');
+    expect(result.ogUrl).toEqual(
+      'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString',
+    );
+    expect(result.ogDate).toEqual('2024-07-25T21:32:46.000Z');
     expect(result.favicon).toEqual('/favicon-48x48.cbbd161b.png');
     // expect(result.charset).to.be.eql('utf8');
     expect(result.ogImage).toEqual({
@@ -176,9 +198,13 @@ describe('basic', function () {
     const result = await ogs({
       url: 'https://www.net-a-porter.com/en-ca/shop/product/gucci/shoes/mid-heel/plastique-logo-embossed-rubber-mules/1647597276126997',
     });
-    expect(result.ogTitle).toEqual('Ivory Plastique logo-embossed rubber mules | GUCCI | NET-A-PORTER');
+    expect(result.ogTitle).toEqual(
+      'Ivory Plastique logo-embossed rubber mules | GUCCI | NET-A-PORTER',
+    );
     expect(result.ogLocale).toEqual('en');
-    expect(result.ogUrl).toEqual('https://www.net-a-porter.com/en-ca/shop/product/gucci/shoes/mid-heel/plastique-logo-embossed-rubber-mules/1647597276126997');
+    expect(result.ogUrl).toEqual(
+      'https://www.net-a-porter.com/en-ca/shop/product/gucci/shoes/mid-heel/plastique-logo-embossed-rubber-mules/1647597276126997',
+    );
     expect(result.ogDate).toBeUndefined();
     expect(result.favicon).toEqual('/favicon.png');
     // expect(result.charset).to.be.eql('utf8');

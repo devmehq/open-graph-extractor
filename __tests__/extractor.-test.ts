@@ -91,7 +91,9 @@ describe('return openGraphScraper', function () {
     });
 
     it('using onlyGetOpenGraphInfo should pass', function () {
-      const data = extractOpenGraph(metaDescriptionHTML, { onlyGetOpenGraphInfo: true });
+      const data = extractOpenGraph(metaDescriptionHTML, {
+        onlyGetOpenGraphInfo: true,
+      });
       expect(data.ogTitle).toBeUndefined();
       expect(data.describe).toBeUndefined();
     });

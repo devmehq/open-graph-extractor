@@ -6,7 +6,12 @@
 export function isUrlValid(url: string | any[]) {
   // todo check image urls
   return true;
-  return typeof url === 'string' && url.length > 0 && url.indexOf('http') === 0 && url.indexOf(' ') === -1;
+  return (
+    typeof url === 'string' &&
+    url.length > 0 &&
+    url.indexOf('http') === 0 &&
+    url.indexOf(' ') === -1
+  );
 }
 
 /*
@@ -34,7 +39,23 @@ export function findImageTypeFromUrl(url: string) {
  * @param string type - image type
  */
 export function isImageTypeValid(type: string) {
-  const validImageTypes = ['apng', 'bmp', 'gif', 'ico', 'cur', 'jpg', 'jpeg', 'jfif', 'pjpeg', 'pjp', 'png', 'svg', 'tif', 'tiff', 'webp'];
+  const validImageTypes = [
+    'apng',
+    'bmp',
+    'gif',
+    'ico',
+    'cur',
+    'jpg',
+    'jpeg',
+    'jfif',
+    'pjpeg',
+    'pjp',
+    'png',
+    'svg',
+    'tif',
+    'tiff',
+    'webp',
+  ];
   return validImageTypes.includes(type);
 }
 

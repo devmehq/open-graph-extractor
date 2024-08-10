@@ -4,12 +4,20 @@ import { IOgImage } from './media';
 import Selector = cheerio.Selector;
 import Element = cheerio.Element;
 
-const doesElementExist = (selector: string | Element, attribute: string, $: Selector) => $(selector).attr(attribute) && $(selector).attr(attribute).length > 0;
+const doesElementExist = (
+  selector: string | Element,
+  attribute: string,
+  $: Selector,
+) => $(selector).attr(attribute) && $(selector).attr(attribute).length > 0;
 
 interface IFallbackOptions {
   allMedia?: boolean;
   ogImageFallback?: boolean;
-  customMetaTags?: ConcatArray<{ multiple: boolean; property: string; fieldName: string }>;
+  customMetaTags?: ConcatArray<{
+    multiple: boolean;
+    property: string;
+    fieldName: string;
+  }>;
   onlyGetOpenGraphInfo?: boolean;
 }
 
@@ -27,20 +35,36 @@ export interface IFallbackOgObject {
   favicon?: string;
 }
 
-export function fallback(ogObject: IFallbackOgObject, options: IFallbackOptions, $: Selector) {
+export function fallback(
+  ogObject: IFallbackOgObject,
+  options: IFallbackOptions,
+  $: Selector,
+) {
   // title fallback
   if (!ogObject.ogTitle) {
     if ($('title').text() && $('title').text().length > 0) {
       ogObject.ogTitle = $('title').first().text();
-    } else if ($('head > meta[name="title"]').attr('content') && $('head > meta[name="title"]').attr('content').length > 0) {
+    } else if (
+      $('head > meta[name="title"]').attr('content') &&
+      $('head > meta[name="title"]').attr('content').length > 0
+    ) {
       ogObject.ogTitle = $('head > meta[name="title"]').attr('content');
     } else if ($('.post-title').text() && $('.post-title').text().length > 0) {
       ogObject.ogTitle = $('.post-title').text();
-    } else if ($('.entry-title').text() && $('.entry-title').text().length > 0) {
+    } else if (
+      $('.entry-title').text() &&
+      $('.entry-title').text().length > 0
+    ) {
       ogObject.ogTitle = $('.entry-title').text();
-    } else if ($('h1[class*="title" i] a').text() && $('h1[class*="title" i] a').text().length > 0) {
+    } else if (
+      $('h1[class*="title" i] a').text() &&
+      $('h1[class*="title" i] a').text().length > 0
+    ) {
       ogObject.ogTitle = $('h1[class*="title" i] a').text();
-    } else if ($('h1[class*="title" i]').text() && $('h1[class*="title" i]').text().length > 0) {
+    } else if (
+      $('h1[class*="title" i]').text() &&
+      $('h1[class*="title" i]').text().length > 0
+    ) {
       ogObject.ogTitle = $('h1[class*="title" i]').text();
     }
   }
@@ -48,10 +72,19 @@ export function fallback(ogObject: IFallbackOgObject, options: IFallbackOptions,
   // Get meta description tag if og description was not provided
   if (!ogObject.ogDescription) {
     if (doesElementExist('head > meta[name="description"]', 'content', $)) {
-      ogObject.ogDescription = $('head > meta[name="description"]').attr('content');
-    } else if (doesElementExist('head > meta[itemprop="description"]', 'content', $)) {
-      ogObject.ogDescription = $('head > meta[itemprop="description"]').attr('content');
-    } else if ($('#description').text() && $('#description').text().length > 0) {
+      ogObject.ogDescription = $('head > meta[name="description"]').attr(
+        'content',
+      );
+    } else if (
+      doesElementExist('head > meta[itemprop="description"]', 'content', $)
+    ) {
+      ogObject.ogDescription = $('head > meta[itemprop="description"]').attr(
+        'content',
+      );
+    } else if (
+      $('#description').text() &&
+      $('#description').text().length > 0
+    ) {
       ogObject.ogDescription = $('#description').text();
     }
   }
@@ -84,7 +117,11 @@ export function fallback(ogObject: IFallbackOgObject, options: IFallbackOptions,
         }
         return false;
       });
-    } else if (typeof ogObject.ogImage !== 'string' && ogObject.ogImage?.url && !ogObject.ogImage?.type) {
+    } else if (
+      typeof ogObject.ogImage !== 'string' &&
+      ogObject.ogImage?.url &&
+      !ogObject.ogImage?.type
+    ) {
       const type = findImageTypeFromUrl(ogObject.ogImage.url);
       if (isImageTypeValid(type)) ogObject.ogImage.type = type;
     }
@@ -101,7 +138,8 @@ export function fallback(ogObject: IFallbackOgObject, options: IFallbackOptions,
         ogObject.ogAudioURL = audioElementValue;
       }
       const audioElementTypeValue = $('audio').attr('type');
-      if (!ogObject.ogAudioType && doesElementExist('audio', 'type', $)) ogObject.ogAudioType = audioElementTypeValue;
+      if (!ogObject.ogAudioType && doesElementExist('audio', 'type', $))
+        ogObject.ogAudioType = audioElementTypeValue;
     } else if (doesElementExist('audio > source', 'src', $)) {
       if (audioSourceElementValue.startsWith('https')) {
         ogObject.ogAudioSecureURL = audioSourceElementValue;
@@ -109,7 +147,11 @@ export function fallback(ogObject: IFallbackOgObject, options: IFallbackOptions,
         ogObject.ogAudioURL = audioSourceElementValue;
       }
       const audioSourceElementTypeValue = $('audio > source').attr('type');
-      if (!ogObject.ogAudioType && doesElementExist('audio > source', 'type', $)) ogObject.ogAudioType = audioSourceElementTypeValue;
+      if (
+        !ogObject.ogAudioType &&
+        doesElementExist('audio > source', 'type', $)
+      )
+        ogObject.ogAudioType = audioSourceElementTypeValue;
     }
   }
 
@@ -117,8 +159,12 @@ export function fallback(ogObject: IFallbackOgObject, options: IFallbackOptions,
   if (!ogObject.ogLocale) {
     if (doesElementExist('html', 'lang', $)) {
       ogObject.ogLocale = $('html').attr('lang');
-    } else if (doesElementExist('head > meta[itemprop="inLanguage"]', 'content', $)) {
-      ogObject.ogLocale = $('head > meta[itemprop="inLanguage"]').attr('content');
+    } else if (
+      doesElementExist('head > meta[itemprop="inLanguage"]', 'content', $)
+    ) {
+      ogObject.ogLocale = $('head > meta[itemprop="inLanguage"]').attr(
+        'content',
+      );
     }
   }
 
@@ -135,8 +181,12 @@ export function fallback(ogObject: IFallbackOgObject, options: IFallbackOptions,
   if (!ogObject.ogUrl) {
     if (doesElementExist('link[rel="canonical"]', 'href', $)) {
       ogObject.ogUrl = $('link[rel="canonical"]').attr('href');
-    } else if (doesElementExist('link[rel="alternate"][hreflang="x-default"]', 'href', $)) {
-      ogObject.ogUrl = $('link[rel="alternate"][hreflang="x-default"]').attr('href');
+    } else if (
+      doesElementExist('link[rel="alternate"][hreflang="x-default"]', 'href', $)
+    ) {
+      ogObject.ogUrl = $('link[rel="alternate"][hreflang="x-default"]').attr(
+        'href',
+      );
     }
   }
 
