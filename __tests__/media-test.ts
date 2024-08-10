@@ -33,21 +33,11 @@ describe('media', function () {
   it('has many images and twitter images', async function () {
     const ogMedia = mediaSetup(
       {
-        ogImage: [
-          'http://test.com/logo_one.png',
-          'http://test.com/logo_two.png',
-          'http://test.com/logo_two.png',
-          '',
-        ],
+        ogImage: ['http://test.com/logo_one.png', 'http://test.com/logo_two.png', 'http://test.com/logo_two.png', ''],
         ogImageType: ['image/png'],
         ogImageWidth: ['300'],
         ogImageHeight: ['300'],
-        twitterImage: [
-          'http://test.com/logo_one.png',
-          'http://test.com/logo_two.png',
-          'http://test.com/logo_two.png',
-          '',
-        ],
+        twitterImage: ['http://test.com/logo_one.png', 'http://test.com/logo_two.png', 'http://test.com/logo_two.png', ''],
         twitterImageAlt: ['image/png'],
         twitterImageWidth: ['300'],
         twitterImageHeight: ['300'],
@@ -72,17 +62,11 @@ describe('media', function () {
   it('has a .gif images and twitter images', async function () {
     const ogMedia = mediaSetup(
       {
-        ogImage: [
-          'http://test.com/logo_one.png',
-          'http://test.com/logo_two.gif',
-        ],
+        ogImage: ['http://test.com/logo_one.png', 'http://test.com/logo_two.gif'],
         ogImageType: ['image/png', 'image/gif'],
         ogImageWidth: ['300', '600'],
         ogImageHeight: ['300', '600'],
-        twitterImage: [
-          'http://test.com/logo_two.gif',
-          'http://test.com/logo_one.png',
-        ],
+        twitterImage: ['http://test.com/logo_two.gif', 'http://test.com/logo_one.png'],
         twitterImageAlt: ['image/gif', 'image/png'],
         twitterImageWidth: ['300', '600'],
         twitterImageHeight: ['300', '600'],
@@ -168,12 +152,7 @@ describe('media', function () {
   it('has multiple music:songs with allMedia set to true', async function () {
     const ogMedia = mediaSetup(
       {
-        musicSong: [
-          'http://test.com/songurl',
-          'http://test.com/songurl3',
-          'http://test.com/songurl2',
-          '',
-        ],
+        musicSong: ['http://test.com/songurl', 'http://test.com/songurl3', 'http://test.com/songurl2', ''],
         musicSongTrack: ['1', '2', '4', ''],
         musicSongDisc: ['1', '2', '1', ''],
       },
