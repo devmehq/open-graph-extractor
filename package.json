@@ -45,12 +45,12 @@
     "cheerio": "1.0.0"
   },
   "devDependencies": {
-    "@types/chai": "4.3.19",
+    "@types/chai": "4.3.20",
     "@types/cheerio": "0.22.35",
     "@types/jest": "^29.5.12",
-    "@types/node": "22.5.4",
+    "@types/node": "22.6.1",
     "axios": "1.7.3",
-    "eslint": "9.10.0",
+    "eslint": "9.11.1",
     "eslint-config-prettier": "9.1.0",
     "eslint-plugin-prettier": "5.2.1",
     "eslint-plugin-unused-imports": "4.1.4",
