@@ -49,7 +49,7 @@
     "@types/cheerio": "0.22.35",
     "@types/jest": "^29.5.12",
     "@types/node": "22.7.0",
-    "axios": "1.7.3",
+    "axios": "1.7.4",
     "eslint": "9.11.1",
     "eslint-config-prettier": "9.1.0",
     "eslint-plugin-prettier": "5.2.1",
