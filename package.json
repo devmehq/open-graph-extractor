@@ -45,7 +45,7 @@
     "cheerio": "1.0.0"
   },
   "devDependencies": {
-    "@types/chai": "4.3.20",
+    "@types/chai": "5.0.0",
     "@types/cheerio": "0.22.35",
     "@types/jest": "^29.5.12",
     "@types/node": "22.6.1",
