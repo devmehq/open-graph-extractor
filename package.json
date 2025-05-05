@@ -46,7 +46,7 @@
   },
   "devDependencies": {
     "@types/chai": "5.2.1",
-    "@types/cheerio": "0.22.35",
+    "@types/cheerio": "1.0.0",
     "@types/jest": "^29.5.12",
     "@types/node": "22.15.3",
     "axios": "1.9.0",
