@@ -48,7 +48,7 @@
     "@types/chai": "5.2.2",
     "@types/cheerio": "1.0.0",
     "@types/jest": "^30.0.0",
-    "@types/node": "22.15.32",
+    "@types/node": "22.15.33",
     "axios": "1.10.0",
     "eslint": "9.29.0",
     "eslint-config-prettier": "10.1.5",
