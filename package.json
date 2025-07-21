@@ -42,13 +42,13 @@
     "examples/**": "prettier --write"
   },
   "dependencies": {
-    "cheerio": "1.1.0"
+    "cheerio": "1.1.2"
   },
   "devDependencies": {
     "@types/chai": "5.2.2",
     "@types/cheerio": "1.0.0",
     "@types/jest": "^30.0.0",
-    "@types/node": "22.16.4",
+    "@types/node": "22.16.5",
     "axios": "1.10.0",
     "eslint": "9.31.0",
     "eslint-config-prettier": "10.1.8",
