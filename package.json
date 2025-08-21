@@ -1,6 +1,6 @@
 {
   "name": "@devmehq/open-graph-extractor",
-  "version": "1.0.4",
+  "version": "1.1.0",
   "private": false,
   "description": "Fast, lightweight Open Graph, Twitter Card, and structured data extractor for Node.js with caching and validation",
   "keywords": [
