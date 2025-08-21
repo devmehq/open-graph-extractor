@@ -1,4 +1,4 @@
-import { extractOpenGraph } from '../src';
+import { extractOpenGraph } from "../src";
 
 const basicHTML = `
   <html>
@@ -49,48 +49,48 @@ const encodingHTML = `
     </body>
   </html>`;
 
-describe('return openGraphScraper', function () {
-  describe('should be able to hit site and find OG title info', function () {
-    it('with html', function () {
+describe("return openGraphScraper", () => {
+  describe("should be able to hit site and find OG title info", () => {
+    it("with html", () => {
       const data = extractOpenGraph(basicHTML);
-      expect(data.ogTitle).toEqual('test page');
+      expect(data.ogTitle).toEqual("test page");
     });
 
-    it('when site is not on blacklist', function () {
+    it("when site is not on blacklist", () => {
       const data = extractOpenGraph(basicHTML);
-      expect(data.ogTitle).toEqual('test page');
+      expect(data.ogTitle).toEqual("test page");
     });
 
-    it('with encoding set to null (this has been deprecated, but should still work)', async function () {
+    it("with encoding set to null (this has been deprecated, but should still work)", async () => {
       const data = extractOpenGraph(encodingHTML);
       // expect(data.charset).to.be.eql(null);
-      expect(data.ogTitle).toEqual('тестовая страница');
-      expect(data.ogDescription).toEqual('привет тестовая страница<');
+      expect(data.ogTitle).toEqual("тестовая страница");
+      expect(data.ogDescription).toEqual("привет тестовая страница<");
     });
 
-    it('when there is more then one image', function () {
+    it("when there is more then one image", () => {
       const data = extractOpenGraph(multipleImageHTML);
-      expect(data.ogTitle).toEqual('test page');
+      expect(data.ogTitle).toEqual("test page");
       expect(data.ogImage).toEqual({
-        url: 'test1.png',
+        url: "test1.png",
         width: null,
         height: null,
-        type: 'png',
+        type: "png",
       });
     });
 
-    it('when meta description exist while og description does not should pass', function () {
+    it("when meta description exist while og description does not should pass", () => {
       const data = extractOpenGraph(metaDescriptionHTML);
-      expect(data.ogTitle).toEqual('test page');
-      expect(data.ogDescription).toEqual('test description from meta');
+      expect(data.ogTitle).toEqual("test page");
+      expect(data.ogDescription).toEqual("test description from meta");
     });
 
-    it('as a browser should pass', function () {
+    it("as a browser should pass", () => {
       const data = extractOpenGraph(basicHTML);
-      expect(data.ogTitle).toEqual('test page');
+      expect(data.ogTitle).toEqual("test page");
     });
 
-    it('using onlyGetOpenGraphInfo should pass', function () {
+    it("using onlyGetOpenGraphInfo should pass", () => {
       const data = extractOpenGraph(metaDescriptionHTML, {
         onlyGetOpenGraphInfo: true,
       });
@@ -98,7 +98,7 @@ describe('return openGraphScraper', function () {
       expect(data.describe).toBeUndefined();
     });
 
-    it('when there is a og:image:secure_url tag should pass', function () {
+    it("when there is a og:image:secure_url tag should pass", () => {
       const secureUrlHTML = `
         <html>
           <head>
@@ -108,14 +108,14 @@ describe('return openGraphScraper', function () {
         </html>`;
       const data = extractOpenGraph(secureUrlHTML);
       expect(data.ogImage).toEqual({
-        url: 'test1.png',
+        url: "test1.png",
         width: null,
         height: null,
-        type: 'png',
+        type: "png",
       });
     });
 
-    it('when there is a og:image:url tag should pass', function () {
+    it("when there is a og:image:url tag should pass", () => {
       const secureUrlHTML = `
         <html>
           <head>
@@ -125,30 +125,30 @@ describe('return openGraphScraper', function () {
         </html>`;
       const data = extractOpenGraph(secureUrlHTML);
       expect(data.ogImage).toEqual({
-        url: 'test1.png',
+        url: "test1.png",
         width: null,
         height: null,
-        type: 'png',
+        type: "png",
       });
     });
 
-    it('when charset and chardet are unknown should pass', function () {
+    it("when charset and chardet are unknown should pass", () => {
       const data = extractOpenGraph(basicHTML);
-      expect(data.ogTitle).toEqual('test page');
+      expect(data.ogTitle).toEqual("test page");
     });
 
-    it('when passing in a custom tag should pass', async function () {
+    it("when passing in a custom tag should pass", async () => {
       const data = extractOpenGraph(basicHTML, {
         customMetaTags: [
           {
             multiple: false,
-            property: 'foo',
-            fieldName: 'fooTag',
+            property: "foo",
+            fieldName: "fooTag",
           },
         ],
       });
-      expect(data.fooTag).toEqual('bar');
-      expect(data.ogTitle).toEqual('test page');
+      expect(data.fooTag).toEqual("bar");
+      expect(data.ogTitle).toEqual("test page");
     });
   });
 });

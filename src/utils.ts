@@ -3,10 +3,8 @@
  * @param string var - the url we want to scrape
  */
 
-export function isUrlValid(url: string | any[]) {
-  // todo check image urls
-  return true;
-  return typeof url === 'string' && url.length > 0 && url.indexOf('http') === 0 && url.indexOf(' ') === -1;
+export function isUrlValid(url: string | string[]): boolean {
+  return typeof url === "string" && url.length > 0 && url.indexOf("http") === 0 && url.indexOf(" ") === -1;
 }
 
 /*
@@ -24,8 +22,8 @@ export function isUrlValid(url: string | any[]) {
  * @param string url - image url
  */
 export function findImageTypeFromUrl(url: string) {
-  let type = url.split('.').pop();
-  [type] = type.split('?');
+  let type = url.split(".").pop();
+  [type] = type.split("?");
   return type;
 }
 
@@ -34,63 +32,33 @@ export function findImageTypeFromUrl(url: string) {
  * @param string type - image type
  */
 export function isImageTypeValid(type: string) {
-  const validImageTypes = ['apng', 'bmp', 'gif', 'ico', 'cur', 'jpg', 'jpeg', 'jfif', 'pjpeg', 'pjp', 'png', 'svg', 'tif', 'tiff', 'webp'];
-  return validImageTypes.includes(type);
-}
-
-/*
- * isThisANonHTMLPage
- * @param string url - url of site
- */
-export function isThisANonHTMLUrl(url: any) {
-  const invalidImageTypes = [
-    '.doc',
-    '.docx',
-    '.xls',
-    '.xlsx',
-    '.ppt',
-    '.pptx',
-    '.3gp',
-    '.avi',
-    '.mov',
-    '.mp4',
-    '.m4v',
-    '.m4a',
-    '.mp3',
-    '.mkv',
-    '.ogv',
-    '.ogm',
-    '.ogg',
-    '.oga',
-    '.webm',
-    '.wav',
-    '.bmp',
-    '.gif',
-    '.jpg',
-    '.jpeg',
-    '.png',
-    '.webp',
-    '.zip',
-    '.rar',
-    '.tar',
-    '.tar.gz',
-    '.tgz',
-    '.tar.bz2',
-    '.tbz2',
-    '.txt',
-    '.pdf',
+  const validImageTypes = [
+    "apng",
+    "bmp",
+    "gif",
+    "ico",
+    "cur",
+    "jpg",
+    "jpeg",
+    "jfif",
+    "pjpeg",
+    "pjp",
+    "png",
+    "svg",
+    "tif",
+    "tiff",
+    "webp",
   ];
-  const extension = findImageTypeFromUrl(url);
-  return invalidImageTypes.some((type) => `.${extension}`.includes(type));
+  return validImageTypes.includes(type);
 }
 
 /*
  * removeNestedUndefinedValues
  * @param object - an object
  */
-export function removeNestedUndefinedValues(object: any) {
+export function removeNestedUndefinedValues(object: Record<string, any>): Record<string, any> {
   Object.entries(object).forEach(([key, value]) => {
-    if (value && typeof value === 'object') removeNestedUndefinedValues(value);
+    if (value && typeof value === "object") removeNestedUndefinedValues(value);
     else if (value === undefined) delete object[key];
   });
   return object;

@@ -2,20 +2,25 @@
   "name": "@devmehq/open-graph-extractor",
   "version": "1.0.4",
   "private": false,
-  "description": "Extract Open Graph and Twitter Card info off from html",
+  "description": "Fast, lightweight Open Graph, Twitter Card, and structured data extractor for Node.js with caching and validation",
   "keywords": [
     "opengraph",
-    "opengraph-extractor",
-    "og",
-    "app links",
-    "dublin core",
-    "meta tags",
-    "metadata",
-    "ogp",
-    "open graph",
+    "open-graph",
+    "twitter-card",
+    "meta-tags",
+    "json-ld",
+    "schema-org",
+    "structured-data",
+    "nodejs",
+    "cheerio",
+    "metadata-extractor",
+    "social-media",
+    "seo",
     "scraper",
-    "twitter card",
-    "twitter"
+    "typescript",
+    "tiny-lru",
+    "cache",
+    "validation"
   ],
   "repository": {
     "type": "git",
@@ -26,41 +31,34 @@
   "main": "./index.js",
   "scripts": {
     "build": "rm -rf dist && tsc -p .",
-    "lint": "eslint",
-    "lint-fix": "yarn lint -- --fix",
+    "lint": "biome check",
+    "lint-fix": "biome check --write",
+    "format": "biome format --write",
     "mocha": "nyc mocha --report lcovonly -- __tests__/*-test.ts",
     "prepare": "husky",
     "prepublishOnly": "yarn build",
-    "prettier": "prettier --write \"src/**/*.{ts,json}\" \"__tests__/**/*.{ts,json}\"",
     "test": "jest",
     "test-ci": "jest"
   },
   "lint-staged": {
-    "src/*.{ts,tsx,js,jsx}": "prettier --write",
-    "__tests__/*.{ts,tsx,js,jsx}": "prettier --write",
-    "docs/**": "prettier --write",
-    "examples/**": "prettier --write"
+    "src/*.{ts,tsx,js,jsx}": "biome check --write",
+    "__tests__/*.{ts,tsx,js,jsx}": "biome check --write"
   },
   "dependencies": {
-    "cheerio": "1.1.2"
+    "cheerio": "1.1.2",
+    "tiny-lru": "^11.4.5"
   },
   "devDependencies": {
+    "@biomejs/biome": "^2.2.0",
     "@types/chai": "5.2.2",
-    "@types/cheerio": "1.0.0",
     "@types/jest": "^30.0.0",
     "@types/node": "24.3.0",
     "axios": "1.11.0",
-    "eslint": "9.33.0",
-    "eslint-config-prettier": "10.1.8",
-    "eslint-plugin-prettier": "5.5.4",
-    "eslint-plugin-unused-imports": "4.2.0",
     "husky": "9.1.7",
     "jest": "^30.0.5",
     "lint-staged": "16.1.5",
-    "prettier": "3.6.2",
     "ts-jest": "^29.4.1",
-    "typescript": "5.9.2",
-    "typescript-eslint": "^8.40.0"
+    "typescript": "5.9.2"
   },
   "engines": {
     "node": ">= 12.0"
