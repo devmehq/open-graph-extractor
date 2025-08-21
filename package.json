@@ -28,7 +28,8 @@
   },
   "license": "MIT",
   "author": "DEV.ME <support@dev.me> (https://dev.me)",
-  "main": "./index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "rm -rf dist && tsc -p .",
     "lint": "biome check",
