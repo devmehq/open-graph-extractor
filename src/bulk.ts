@@ -147,7 +147,6 @@ export async function extractOpenGraphBulk(
 
   try {
     await Promise.all(promises);
-    // biome-ignore lint/correctness/noUnusedVariables: error
   } catch (error) {
     // If continueOnError is false, we'll get here
     // Results array will contain partial results

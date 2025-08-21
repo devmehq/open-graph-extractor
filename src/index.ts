@@ -1,3 +1,4 @@
+import type { CheerioAPI } from "cheerio";
 import * as cheerio from "cheerio";
 import { type CacheManager, createCache } from "./cache";
 import { fallback, type IFallbackOgObject } from "./fallback";
@@ -124,8 +125,7 @@ export function extractOpenGraph(input: string | Buffer, options?: IExtractOpenG
   const metaFields = fields.concat(options?.customMetaTags ?? []);
 
   // find all the open graph info in the meta tags
-  $("meta").each((_index, meta: any) => {
-    // biome-ignore lint/style/useBlockStatements: single line for readability
+  $("meta").each((_index, meta) => {
     if (!meta.attribs || (!meta.attribs.property && !meta.attribs.name)) return;
     const property = meta.attribs.property || meta.attribs.name || meta.attribs.itemprop || meta.attribs.itemProp;
     const content = meta.attribs.content || meta.attribs.value;
@@ -254,8 +254,7 @@ async function extractOpenGraphAsyncImpl(
     const metaFields = fields.concat(options?.customMetaTags ?? []);
 
     // Extract meta tags
-    $("meta").each((_index, meta: any) => {
-      // biome-ignore lint/style/useBlockStatements: single line for readability
+    $("meta").each((_index, meta) => {
       if (!meta.attribs || (!meta.attribs.property && !meta.attribs.name)) return;
       const property = meta.attribs.property || meta.attribs.name || meta.attribs.itemprop || meta.attribs.itemProp;
       const content = meta.attribs.content || meta.attribs.value;
@@ -535,7 +534,7 @@ function getConfidenceLevel(score: number): ConfidenceLevel {
 /**
  * Extract article content from HTML
  */
-function extractArticleContent($: any): { content: string; readingTime: number; wordCount: number } | null {
+function extractArticleContent($: CheerioAPI): { content: string; readingTime: number; wordCount: number } | null {
   // Try to find main content area
   const selectors = [
     "article",
@@ -560,7 +559,7 @@ function extractArticleContent($: any): { content: string; readingTime: number; 
   if (!content) {
     // Fallback to largest text block
     let maxLength = 0;
-    $("p").each((_: any, element: any) => {
+    $("p").each((_, element) => {
       const text = $(element).text().trim();
       if (text.length > maxLength) {
         maxLength = text.length;

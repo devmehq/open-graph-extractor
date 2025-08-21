@@ -1,9 +1,11 @@
+import type { Cheerio, CheerioAPI } from "cheerio";
+import type { Element } from "domhandler";
 import type { IStructuredData } from "./types";
 
 /**
  * Extract all structured data from HTML
  */
-export function extractStructuredData($: any): IStructuredData {
+export function extractStructuredData($: CheerioAPI): IStructuredData {
   return {
     jsonLD: extractJsonLD($),
     schemaOrg: extractSchemaOrg($),
@@ -16,7 +18,7 @@ export function extractStructuredData($: any): IStructuredData {
 /**
  * Extract JSON-LD structured data
  */
-export function extractJsonLD($: any): any[] {
+export function extractJsonLD($: CheerioAPI): any[] {
   const jsonLDData: any[] = [];
 
   $('script[type="application/ld+json"]').each((_, element) => {
@@ -61,8 +63,8 @@ export function extractJsonLDByType<T>(jsonLDData: any[], type: string): T | nul
 /**
  * Extract Schema.org microdata
  */
-export function extractSchemaOrg($: any): any {
-  const schemaData: any = {};
+export function extractSchemaOrg($: CheerioAPI): Record<string, any> {
+  const schemaData: Record<string, any> = {};
 
   // Extract itemscope elements
   $("[itemscope]").each((_, element) => {
@@ -85,8 +87,8 @@ export function extractSchemaOrg($: any): any {
 /**
  * Extract properties from an itemscope element
  */
-function extractItemProperties($: any, $element: any): any {
-  const properties: any = {};
+function extractItemProperties($: CheerioAPI, $element: Cheerio<Element>) {
+  const properties: Record<string, any> = {};
 
   $element.find("[itemprop]").each((_, propElement) => {
     const $prop = $(propElement);
@@ -127,8 +129,8 @@ function extractItemProperties($: any, $element: any): any {
 /**
  * Extract RDFa data
  */
-export function extractRDFa($: any): any {
-  const rdfaData: any = {};
+export function extractRDFa($: CheerioAPI) {
+  const rdfaData: Record<string, any[]> = {};
 
   $("[typeof]").each((_, element) => {
     const $element = $(element);
@@ -147,14 +149,14 @@ export function extractRDFa($: any): any {
 /**
  * Extract RDFa properties
  */
-function extractRDFaProperties($: any, $element: any): any {
-  const properties: any = {};
+function extractRDFaProperties($: CheerioAPI, $element: Cheerio<Element>) {
+  const properties: Record<string, string | string[]> = {};
 
   $element.find("[property]").each((_, propElement) => {
     const $prop = $(propElement);
     const propName = $prop.attr("property");
     if (propName) {
-      let value: any;
+      let value: string | string[];
 
       if ($prop.attr("content")) {
         value = $prop.attr("content");
@@ -178,8 +180,8 @@ function extractRDFaProperties($: any, $element: any): any {
 /**
  * Extract Dublin Core metadata
  */
-export function extractDublinCore($: any): any {
-  const dcData: any = {};
+export function extractDublinCore($: CheerioAPI): Record<string, string> {
+  const dcData: Record<string, string> = {};
 
   // Standard DC meta tags
   $('meta[name^="DC."], meta[name^="dc."]').each((_, element) => {

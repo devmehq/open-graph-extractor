@@ -1,3 +1,5 @@
+import type { CheerioAPI } from "cheerio";
+import type { Element } from "domhandler";
 import { fields } from "./fields";
 import type { ICaption, IImageMetadata, ImageFormat, ISrcSetImage, IThumbnail, IVideoMetadata, OGType } from "./types";
 import { isUrlValid } from "./utils";
@@ -373,7 +375,7 @@ export function parseSrcSet(srcset: string): ISrcSetImage[] {
 /**
  * Extract enhanced image metadata
  */
-export function extractImageMetadata($: any, element: any): IImageMetadata {
+export function extractImageMetadata($: CheerioAPI, element: Element): IImageMetadata {
   const $img = $(element);
   const src = $img.attr("src") || "";
   const srcset = $img.attr("srcset");
@@ -418,7 +420,7 @@ export function extractImageMetadata($: any, element: any): IImageMetadata {
   const $picture = $img.closest("picture");
   if ($picture.length > 0) {
     const sources = $picture.find("source");
-    sources.each((_: any, source: any) => {
+    sources.each((_, source) => {
       const type = $(source).attr("type");
       if (type?.includes("webp") || type?.includes("avif")) {
         metadata.type = type.includes("webp") ? "webp" : "avif";
@@ -442,10 +444,10 @@ export function extractImageMetadata($: any, element: any): IImageMetadata {
 /**
  * Extract all images with enhanced metadata
  */
-export function extractAllImages($: any): IImageMetadata[] {
+export function extractAllImages($: CheerioAPI): IImageMetadata[] {
   const images: IImageMetadata[] = [];
 
-  $("img").each((_: any, element: any) => {
+  $("img").each((_, element) => {
     const metadata = extractImageMetadata($, element);
     if (isUrlValid(metadata.url)) {
       images.push(metadata);
@@ -453,7 +455,7 @@ export function extractAllImages($: any): IImageMetadata[] {
   });
 
   // Also extract images from meta tags
-  $('meta[property="og:image"], meta[name="twitter:image"]').each((_: any, element: any) => {
+  $('meta[property="og:image"], meta[name="twitter:image"]').each((_, element) => {
     const content = $(element).attr("content");
     if (content && isUrlValid(content)) {
       const existing = images.find((img) => img.url === content);
@@ -472,7 +474,7 @@ export function extractAllImages($: any): IImageMetadata[] {
 /**
  * Extract video metadata
  */
-export function extractVideoMetadata($: any, url?: string): IVideoMetadata | null {
+export function extractVideoMetadata($: CheerioAPI, url?: string): IVideoMetadata | null {
   const metadata: Partial<IVideoMetadata> = {};
 
   // Try to get from og:video tags
@@ -517,7 +519,7 @@ export function extractVideoMetadata($: any, url?: string): IVideoMetadata | nul
 
   // Extract thumbnails
   const thumbnails: IThumbnail[] = [];
-  $('meta[property="og:image"]').each((_: any, element: any) => {
+  $('meta[property="og:image"]').each((_, element) => {
     const url = $(element).attr("content");
     if (url) {
       thumbnails.push({
@@ -563,7 +565,7 @@ export function extractVideoMetadata($: any, url?: string): IVideoMetadata | nul
 
   // Look for captions/subtitles
   const captions: ICaption[] = [];
-  $("track").each((_: any, element: any) => {
+  $("track").each((_, element) => {
     const $track = $(element);
     const src = $track.attr("src");
     const srclang = $track.attr("srclang");
@@ -660,8 +662,13 @@ export function selectBestImage(images: IImageMetadata[]): IImageMetadata | null
 /**
  * Extract audio metadata
  */
-export function extractAudioMetadata($: any): any {
-  const metadata: any = {};
+export function extractAudioMetadata($: CheerioAPI) {
+  const metadata: {
+    url?: string;
+    secureUrl?: string;
+    type?: string;
+    duration?: number; // in seconds
+  } = {};
 
   // Check for og:audio tags
   const ogAudio = $('meta[property="og:audio"]').attr("content") || $('meta[property="og:audio:url"]').attr("content");
