@@ -215,14 +215,6 @@ const result = await extractOpenGraphAsync(html, {
 - **Bundle Size**: 15% smaller with better tree-shaking
 - **Type Checking**: 10x faster with Biome vs ESLint
 
-### 🛣️ **Roadmap**
-
-#### **Planned for v1.2.0**
-- **Browser Support**: Re-add optional browser compatibility
-- **Streaming**: Support for streaming HTML parsing
-- **Plugins**: Plugin system for custom extractors
-- **AI Integration**: Optional AI-powered content enhancement
-
 ## v1.0.4
 - Added fallback itemProp thanks @markwcollins [#56](https://github.com/devmehq/open-graph-extractor/pull/56)
 - Fixed test
